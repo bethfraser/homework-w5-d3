@@ -1,15 +1,108 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+* {
+  font-family: Helvetica;
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  background-color: #CDEDE7;
+  height: 70px;
+}
+
+header h1 a {
+  font-family: 'Jura', Helvetica;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+  margin-left: 25px;
+  line-height: 70px;
+  font-size: 55px;
+}
+
+header h1 {
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  font-family: 'Jura', Helvetica;
+  font-weight: 600;
+}
+
+.login {
+  float: right;
+  margin-right: 25px;
+  line-height: 70px;
+  font-family: 'Jura';
+  font-size: 1.2em;
+}
+
+.login a {
+  font-family: 'Jura';
+}
+
+nav ul {
+  padding: 0;
+  margin: 0;
+  margin-left: 25px;
+}
+
+nav ul li {
+  display: inline-block;
+  line-height: 70px;
+  margin-right: 15px;
+}
+
+a, a:visited {
+  color: #4584DC;
+}
+
+a:hover, input[type="submit"]:hover {
+  color: #45d0dc;
+}
+
+a.new, input[type="submit"] {
+  padding: 5px;
+  background-color: #CDEDE7;
+  border: 1px solid #45d0dc;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 5px;
+  color: #4584DC;
+  font-size: 1em;
+}
+
+input[type="text"], textarea {
+  width: 300px;
+  border: 1px solid grey;
+  padding: 5px;
+  font-size: 1em;
+}
+
+form label {
+  display: inline-block;
+  margin: 5px 0;
+}
+
+.main {
+  padding-left: 25px;
+}
+
+.comment {
+  width: 80%;
+  max-width: 400px;
+}
+
+.comment h4 {
+  padding: 0;
+  margin: 5px 0;
+  display: inline-block;
+}
+
+.comment_section {
+  border-top: 8px solid #CDEDE7;
+  margin-right: 25px;
+}

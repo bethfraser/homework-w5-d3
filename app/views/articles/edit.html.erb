@@ -1,6 +1,12 @@
-<h2>Edit Article</h2>
+<h1>Edit Article</h1>
 
 <%= form_for @article do |f| %>
+
+<% if current_user.role?("admin") %>
+<%= f.label :user_id, 'Author' %>
+<%= f.select :user_id, User.author.collect { |u| [ u.name, u.id ] } %>
+<br><br>
+<% end %>
 
 <%= f.label :title %><br>
 <%= f.text_field :title %><br>

@@ -24,6 +24,9 @@ end
 def update
   article = Article.find(params[:id])
   article.update(article_params)
+  if current_user.role?("admin")
+  article.update(params.require(:article).permit(:title, :content, :image, :user_id))
+  end
   redirect_to article_path(article)
 end
 

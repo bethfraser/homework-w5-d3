@@ -1,32 +1,41 @@
-<h2><%= @article.title %></h2>
+<h1><%= @article.title %></h1>
 
 <p>
-by <%= @article.user.name %><br><br>
+<% if @article.user %>
+by <%= @article.user.name %>
+<% end %><br><br>
+
+<% if @article.image != "" %>
   <%= image_tag(@article.image) %><br><br>
+<% end %>
 
   <%= @article.html %>
 </p>
 <p>
   <% if can? :update, @article %>
   <%= link_to 'Edit', edit_article_path(@article) %>
-  <% end %><br>
+  <% end %>
   <% if can? :destroy, @article %>
-  <%= link_to 'Delete', article_path(@article), method: :delete, data: {confirm: 'Are you sure you want to delete this article?'} %>
+  - <%= link_to 'Delete', article_path(@article), method: :delete, data: {confirm: 'Are you sure you want to delete this article?'} %>
   <% end %>
 </p>
 
 
 <br>
+<section class="comment_section">
 <h3>Comments</h3>
 <% @article.comments.each do |comment| %>
-<%= comment.user.name %> - <%= comment.updated_at %> <br>
-<%= comment.content %> <br>
+<div class="comment">
+<h4><%= comment.user.name %> - <%= comment.updated_at.strftime("%H:%M, %e %b %Y") %></h4><br>
+<%= comment.content %> <br><br>
 <% if can? :update, comment %>
-<%= link_to 'Edit', edit_comment_path(comment) %> - 
+<%= link_to 'Edit', edit_comment_path(comment) %>
 <% end %>
 <% if can? :destroy, comment %>
-<%= link_to 'Delete', comment_path(comment), method: :delete, data: {confirm: 'Are you sure you want to delete this comment?'} %><br>
+- <%= link_to 'Delete', comment_path(comment), method: :delete, data: {confirm: 'Are you sure you want to delete this comment?'} %><br>
+</div>
 <% end %>
+
 <br>
 
 <% end %>
@@ -34,12 +43,13 @@ by <%= @article.user.name %><br><br>
 <% if current_user %>
 <h3>Write a comment:</h3> 
 <%= form_for @comment do |f| %>
-
 <%= f.hidden_field :article_id, value: @article.id %>
-<%= f.text_area :content %>
+<%= f.text_area :content, rows: 5 %>
 <br>
 <%= f.submit %>
 
 <% end %>
 <% end %>
+
+</section>
 
