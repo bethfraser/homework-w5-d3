@@ -29,6 +29,7 @@ end
 
 def show
   @article = Article.find(params[:id])
+  @comment = Comment.new
 end
 
 def destroy
@@ -40,7 +41,7 @@ end
 private
 
 def article_params
-  params.require(:article).permit(:title, :content, :image, :user_id)
+  params.require(:article).permit(:title, :content, :image)
 end
 
 

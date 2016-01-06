@@ -9,6 +9,9 @@ class Ability
         can :manage, :all
     else
         can :read, Article
+        can [:update, :destroy], Comment do |comment|
+            comment.user == user
+        end
     end
 
     if user.role? :author
@@ -18,7 +21,7 @@ class Ability
         end
     end 
 
-
+    
 
 
 

@@ -1,15 +1,44 @@
 <h2><%= @article.title %></h2>
 
 <p>
-<%= image_tag(@article.image) %><br><br>
+  <%= image_tag(@article.image) %><br><br>
 
-<%= @article.content %>
+  <%= @article.content %>
 </p>
 <p>
-<% if can? :update, @article %>
-<%= link_to 'Edit', edit_article_path(@article) %>
-<% end %><br>
-<% if can? :destroy, @article %>
-<%= link_to 'Delete', article_path(@article), method: :delete, data: {confirm: 'Are you sure you want to delete this article?'} %>
-<% end %>
+  <% if can? :update, @article %>
+  <%= link_to 'Edit', edit_article_path(@article) %>
+  <% end %><br>
+  <% if can? :destroy, @article %>
+  <%= link_to 'Delete', article_path(@article), method: :delete, data: {confirm: 'Are you sure you want to delete this article?'} %>
+  <% end %>
 </p>
+
+
+<br>
+<h3>Comments</h3>
+<% @article.comments.each do |comment| %>
+<%= comment.user.email %> - <%= comment.updated_at %> <br>
+<%= comment.content %> <br>
+<% if can? :update, comment %>
+<%= link_to 'Edit', edit_comment_path(comment) %><br>
+<% end %>
+<% if can? :destroy, comment %>
+<%= link_to 'Delete', comment_path(comment), method: :delete, data: {confirm: 'Are you sure you want to delete this comment?'} %>
+<% end %>
+<br>
+
+<% end %>
+
+<% if current_user %>
+<h3>Write a comment:</h3> 
+<%= form_for @comment do |f| %>
+
+<%= f.hidden_field :article_id, value: @article.id %>
+<%= f.text_area :content %>
+<br>
+<%= f.submit %>
+
+<% end %>
+<% end %>
+
