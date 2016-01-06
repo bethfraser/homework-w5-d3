@@ -4,7 +4,7 @@
 by <%= @article.user.name %><br><br>
   <%= image_tag(@article.image) %><br><br>
 
-  <%= @article.content %>
+  <%= @article.html %>
 </p>
 <p>
   <% if can? :update, @article %>
