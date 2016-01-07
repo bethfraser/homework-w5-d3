@@ -106,3 +106,7 @@ form label {
   border-top: 8px solid #CDEDE7;
   margin-right: 25px;
 }
+
+.notice, .alert {
+  margin-left: 25px;
+}

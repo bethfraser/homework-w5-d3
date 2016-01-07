@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_path, alert: "You cannot access this page."
+    redirect_to root_path, alert: "ERROR: You do not have permission to perform that action."
   end
   
 end
